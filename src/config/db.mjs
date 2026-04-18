@@ -1,5 +1,9 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+dotenv.config();
 
-export const connectDB = async () => { 
-    await mongoose.connect("mongodb://localhost:27017/chat-app").then(()=>console.log("connected"))
+const mongoUri = process.env.MONGO_URI;
+
+export const connectDB = async () => {
+    await mongoose.connect(mongoUri).then(() => console.log("connected"))
 }
