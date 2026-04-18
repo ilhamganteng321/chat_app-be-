@@ -11,6 +11,10 @@ import mongoose from "mongoose";
 import { Server } from "socket.io";
 import http from "http";
 import cors from 'cors';
+import dotenv from 'dotenv';
+dotenv.config();
+
+const secret = process.env.SECRET;
 
 export async function main() {
     await connectDB();
@@ -21,14 +25,14 @@ export async function main() {
     app.use(express.urlencoded({ extended: true }));
     app.use(cookieParser());
     app.use(cors({
-        origin: "http://localhost:5173",
+        origin: "http://chat.ngacir.my.id",
         credentials: true,
         methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
         allowedHeaders: ["Content-Type", "Authorization"]
     }));
 
     app.use(session({
-        secret: "your-secret-key",
+        secret: secret,
         resave: false,
         saveUninitialized: false,
         store: MongoStore.create({
