@@ -25,7 +25,7 @@ export async function main() {
     app.use(express.urlencoded({ extended: true }));
     app.use(cookieParser());
     app.use(cors({
-        origin: "http://chat.ngacir.my.id",
+        origin: "https://chat.ngacir.my.id",
         credentials: true,
         methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
         allowedHeaders: ["Content-Type", "Authorization"]
